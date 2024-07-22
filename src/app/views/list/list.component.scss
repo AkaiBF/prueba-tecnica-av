@@ -1,0 +1,15 @@
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 3em 5em;
+
+  mat-card {
+    width: 20%;
+    margin: 3em;
+    background-color: #d3d3d3;
+    border-radius: 3px;
+  }
+}

@@ -1,0 +1,22 @@
+<nav id="nav">
+  <a routerLink="/home">Buscador</a>
+</nav>
+<header [style]="hotel?.image ? 'background-image: url(' + hotel!.image + ')' : ''">
+  <h1>{{ hotel!.name }}</h1>
+  <h2>{{ hotel!.address }}</h2>
+</header>
+<main>
+  <section class="images">
+    <img [src]="hotel!.image" />
+  </section>
+  <section class="info">
+    <h1>{{ hotel!.name }}</h1>
+    <h2>{{ hotel!.address }}</h2>
+    @for(i of range(hotel!.stars); track $index) {
+      <mat-icon aria-hidden="false" class="star-icon" fontIcon="stars"></mat-icon>
+    }
+    <p>Puntuación: {{ hotel!.rate }}</p>
+    <p>Precio: {{ hotel!.price }} €</p>
+  </section>
+</main>
+<app-footer></app-footer>

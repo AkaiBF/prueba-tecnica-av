@@ -1,0 +1,41 @@
+<header>
+
+  <form [formGroup]="form" (keyup.enter)="search()">
+    <mat-form-field class="w-100">
+      <mat-label>Busca tu hotel</mat-label>
+      <input matInput formControlName="name" />
+      <mat-icon aria-hidden="false" matSuffix>search</mat-icon>
+    </mat-form-field>
+    <br>
+    <section class="form-row">
+
+      @for(i of range(5); track $index) {
+        <ng-container formArrayName="stars">
+          <mat-checkbox [formControlName]="$index">
+            @for(j of range($index + 1); track $index) {
+              <mat-icon aria-hidden="false" class="star-icon" fontIcon="stars"></mat-icon>
+            }
+          </mat-checkbox>
+        </ng-container>
+        <br>
+      }
+    </section>
+    <section class="form-row">
+      <div class="form-row__slider-filter">
+        <h3>Puntuación: mayor de {{ form.value.rate }}</h3>
+        <mat-slider min="0" max="5" step="0.1" discrete>
+          <input matSliderThumb formControlName="rate">
+        </mat-slider>
+      </div>
+      <div class="form-row__slider-filter">
+        <h3>Precio: menos de {{ form.value.price }} €</h3>
+        <mat-slider min="0" [max]="maxPrice" step="5" discrete>
+          <input matSliderThumb [value]="maxPrice" formControlName="price">
+        </mat-slider>
+      </div>
+    </section>
+    <button mat-raised-button color="primary" (click)="search()">Buscar</button>
+  </form>
+</header>
+<app-list id="list" [hotels]="hotels"></app-list>
+<app-footer></app-footer>

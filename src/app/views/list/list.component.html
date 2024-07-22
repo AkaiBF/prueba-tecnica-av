@@ -1,0 +1,20 @@
+<main>
+  @if(hotels.length === 0) {
+    <h2>No se han encontrado hoteles</h2>
+  }
+  @else {
+
+    @for(hotel of hotels; track hotel.id) {
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ hotel.name }}</mat-card-title>
+          <mat-card-subtitle>{{ hotel.stars }} estrellas</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="hotel.image">
+        <mat-card-actions>
+          <button mat-button (click)="loadDetail(hotel.id)">Ver más</button>
+        </mat-card-actions>
+      </mat-card>
+    }
+  }
+</main>
